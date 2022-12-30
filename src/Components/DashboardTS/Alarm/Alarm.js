@@ -23,7 +23,8 @@ const dragItems = [
     link: "View details..",
     location:'1st floor',
     active_time:'12:00pm', 
-    CCTV:''
+    cctv_link:'www.google.com',
+    name:'active'
   },
   {
     id: "2",
@@ -32,7 +33,8 @@ const dragItems = [
     link: "View details...",
     location:'1st floor',
     acknowledged_time:'12:00pm', 
-    CCTV:''
+    cctv_link: 'www.google.com',
+    name:'ack'
   },
   {
     id: "3",
@@ -41,7 +43,8 @@ const dragItems = [
     link: "View details...",
     location:'1st floor',
     close_time:'12:00pm', 
-    CCTV:''
+    cctv_link:'www.google.com',
+    name:'close'
   },
 ];
 

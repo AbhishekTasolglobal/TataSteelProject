@@ -20,16 +20,21 @@ const dragItems = [
     id: "1",
     title: "Total Open Work Order",
     quant: "2",
+    location: "2nd Building",
+    time: "1:00pm",
     link: "View details..",
-    Pannel_Details:  'active'
+    pannel_details:  'active',
+    name:'towo'
   },
   {
     id: "2",
     title: "Total Close Work Order",
     quant: "2",
+    location: "2nd Building",
+    time: "1:00pm",
     link: "View details...",
-    Pannel_Details:  'active'
-  
+    pannel_details:  'active',
+    name:'tcwo'
   },
 ];
 

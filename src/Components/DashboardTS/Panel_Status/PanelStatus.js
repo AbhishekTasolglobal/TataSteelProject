@@ -23,25 +23,28 @@ const dragItems = [
     id: "1",
     title: "Online Detectors",
     quant: "80",
-    link: "More details..",
-    position: "1st building",
+    link: "View details..",
+    location: "1st building",
     time: "12:00pm",
+    name:'od'
   },
   {
     id: "2",
     title: "Off-Line Detectors",
     quant: "40",
     link: "View details...",
-    position: "2nd Building",
+    location: "2nd Building",
     time: "1:00pm",
+    name:'old'
   },
   {
     id: "3",
     title: "Reliability",
     quant: "72%",
     link: "View details...",
-    position: "2nd Building",
+    location: "2nd Building",
     time: "1:00pm",
+    name:'rel'
   },
 ];
 

@@ -21,16 +21,21 @@ const dragItems = [
     id: "1",
     title: "Open Preventive Maintenance Work Order",
     quant: "3",
+    location: "2nd Building",
+    time: "1:00pm",
     link: "View details..",
-    asset_details:'active'
+    asset_details:'active',
+    name:'opmwo'
   },
   {
     id: "2",
     title: "Close Preventive Maintenance Work Order",
     quant: "1",
+    location: "2nd Building",
+    time: "1:00pm",
     link: "View details...",
-    asset_details:'active'
-  
+    asset_details:'active',
+    name:'cpmwo'
   },
 ];
 
