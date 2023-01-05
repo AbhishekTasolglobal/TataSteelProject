@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { getDatasetAtEvent } from "react-chartjs-2";
 import { ReactSortable } from "react-sortablejs";
 import {
   DropdownToggle,
@@ -15,27 +14,20 @@ import {
   Button,
 } from "reactstrap";
 import PopUp from "../Modal/PopUp";
+import ChartPM from "./ChartPM/ChartPM";
 
 const dragItems = [
   {
     id: "1",
-    title: "Open Preventive Maintenance Work Order",
-    quant: "3",
+    title: "Open / Closed",
+    quant1: "3",
+    quant2: "1",
     location: "2nd Building",
     time: "1:00pm",
-    link: "View details..",
-    asset_details:'active',
-    name:'opmwo'
-  },
-  {
-    id: "2",
-    title: "Close Preventive Maintenance Work Order",
-    quant: "1",
-    location: "2nd Building",
-    time: "1:00pm",
-    link: "View details...",
-    asset_details:'active',
-    name:'cpmwo'
+    link: <u>more..</u>,
+    asset_details: "active",
+    chart:<ChartPM/>,
+    name: "opmwo",
   },
 ];
 
@@ -60,7 +52,7 @@ const PMWorkOrder = () => {
         <CardTitle tag="h4">
           <h3>Preventive Maintenance Work Order</h3>
         </CardTitle>
-        <CardTitle style={{ "padding-left": "22em" }}>Sort By:</CardTitle>
+        {/* <CardTitle style={{ "padding-left": "49em" }}>Sort By:</CardTitle> */}
         <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
           <DropdownToggle color="flat-primary" caret>
             {active}
@@ -100,25 +92,40 @@ const PMWorkOrder = () => {
         setList={setCardsArr}
       >
         {cardsArr.map((item) => (
-          <Col className="draggable" xl="6" md="6" sm="12" key={item.id}>
+          <Col className="draggable" xl="12" md="12" sm="12" key={item.id}>
             <Card
               className={`draggable-cards ${item.id !== 4 ? "me-1" : null}`}
+              style={{ height: "15rem" }}
             >
-              <CardHeader>
-                <CardTitle tag="h4">{item.title}</CardTitle>
-              </CardHeader>
-              <CardBody>
-                <CardText>{item.quant}</CardText>
-                <CardText>
-                  <Button.Ripple
-                    color="flat-primary"
-                    onClick={() => getData(item)}
-                  >
-                    {item.link}
-                  </Button.Ripple>
-                  <PopUp item={data} modal={modal} setModal={setModal} />
-                </CardText>
-              </CardBody>
+              <div className="flex">
+                <div>
+                  <CardHeader>
+                    <CardTitle tag="h4">
+                      {item.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody>
+                    <CardText >
+                      {item.quant1} / {item.quant2}
+                    </CardText>
+                    <>
+                      <br/>
+                      <br/>
+                      <Button.Ripple
+                        color="flat-primary"
+                        onClick={() => getData(item)}
+                        style={{ marginLeft: "-13%" }}
+                      >
+                        {item.link}
+                      </Button.Ripple>
+                      <PopUp item={data} modal={modal} setModal={setModal} />
+                    </>
+                  </CardBody>
+                  </div>
+                  <div>
+                    {item.chart}
+                  </div>
+              </div>
             </Card>
           </Col>
         ))}

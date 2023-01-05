@@ -15,36 +15,40 @@ import {
 } from "reactstrap";
 import PopUp from "../Modal/PopUp";
 
+import "./Alarm.css";
 const dragItems = [
   {
     id: "1",
     title: "Active",
     quant: "2",
-    link: "View details..",
-    location:'1st floor',
-    active_time:'12:00pm', 
-    cctv_link:'www.google.com',
-    name:'active'
+    link: <u>more..</u>,
+    location: "1st floor",
+    active_time: "12:00pm",
+    cctv_link: "www.google.com",
+    name: "active",
+    icon: "../icons/warning.png",
   },
   {
     id: "2",
     title: "Acknowledged",
     quant: "1",
-    link: "View details...",
-    location:'1st floor',
-    acknowledged_time:'12:00pm', 
-    cctv_link: 'www.google.com',
-    name:'ack'
+    link: <u>more..</u>,
+    location: "1st floor",
+    acknowledged_time: "12:00pm",
+    cctv_link: "www.google.com",
+    icon: "../icons/customer.png",
+    name: "ack",
   },
   {
     id: "3",
-    title: "Close",
+    title: "Closed",
     quant: "2",
-    link: "View details...",
-    location:'1st floor',
-    close_time:'12:00pm', 
-    cctv_link:'www.google.com',
-    name:'close'
+    link: <u>more..</u>,
+    location: "1st floor",
+    close_time: "12:00pm",
+    cctv_link: "www.google.com",
+    icon: "../icons/resolved.png",
+    name: "close",
   },
 ];
 
@@ -52,23 +56,23 @@ const Alarm = () => {
   const [cardsArr, setCardsArr] = useState(dragItems);
   const [active, setActive] = useState("24-Hours");
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [data,setData]=useState('')
-  const [modal,setModal]=useState(false)
+  const [data, setData] = useState("");
+  const [modal, setModal] = useState(false);
+
   const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen)
+    setDropdownOpen(!dropdownOpen);
   };
 
-  const getData=(item)=>{
-  setData(item)
-  setModal(!modal)
-  }
+  const getData = (item) => {
+    setData(item);
+    setModal(!modal);
+  };
   return (
     <>
       <CardHeader className="d-flex flex-md-row flex-column justify-content-md-between justify-content-start align-items-md-center align-items-start">
         <CardTitle tag="h4">
           <h3>Alarm</h3>
         </CardTitle>
-        <CardTitle style={{ "padding-left": "46em" }}>Sort By:</CardTitle>
         <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
           <DropdownToggle color="flat-primary" caret>
             {active}
@@ -103,32 +107,45 @@ const Alarm = () => {
         </ButtonDropdown>
       </CardHeader>
 
-      <ReactSortable
-        className="row sortable-row"
-        list={cardsArr}
-        setList={setCardsArr}
-      >
+      <div className="row sortable-row" list={cardsArr} setList={setCardsArr}>
         {cardsArr.map((item) => (
-          <Col className="draggable" xl="4" md="6" sm="12" key={item.id}>
+          <Col className="draggable" xl="4" md="12" sm="12" key={item.id}>
             <Card
               className={`draggable-cards ${item.id !== 4 ? "me-1" : null}`}
+              style={{ height: "13rem" }}
             >
               <CardHeader>
                 <CardTitle tag="h4">{item.title}</CardTitle>
               </CardHeader>
               <CardBody>
-                <CardText>{item.quant}</CardText>
-                <CardText>
-                  <Button.Ripple color="flat-primary"  onClick={()=>getData(item)}>
-                    {item.link}
-                  </Button.Ripple>
-                  <PopUp item={data} modal={modal} setModal={setModal}/>
-                </CardText>
+                <br />
+                {item.name === "active" ? (
+                  <CardText style={{ color: "#ff5733" }}>{item.quant}</CardText>
+                ) : (
+                  <CardText>{item.quant}</CardText>
+                )}
+                <div className="flex">
+                  <div className="text">
+                    <>
+                      <Button.Ripple
+                        color="flat-primary"
+                        onClick={() => getData(item)}
+                        style={{ marginLeft: "-25%" }}
+                      >
+                        {item.link}
+                      </Button.Ripple>
+                      <PopUp item={data} modal={modal} setModal={setModal} />
+                    </>
+                  </div>
+                  <div className="image">
+                    <img src={item.icon}  style={{width:'40%'}}/>
+                  </div>
+                </div>
               </CardBody>
             </Card>
           </Col>
         ))}
-      </ReactSortable>
+      </div>
     </>
   );
 };

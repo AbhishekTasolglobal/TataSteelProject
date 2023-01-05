@@ -5,18 +5,18 @@ import { Fragment, useContext } from 'react'
 import Breadcrumbs from '@components/breadcrumbs'
 
 // ** Reactstrap Imports
-import { Row, Col } from 'reactstrap'
+import { Col, Row } from 'reactstrap'
 
 // ** Deom Charts
-import BarChart from './ChartjsBarChart'
-import LineChart from './ChartjsLineChart'
 import AreaChart from './ChartjsAreaChart'
-import RadarChart from './ChartjsRadarChart'
+import BarChart from './ChartjsBarChart'
 import BubbleChart from './ChartjsBubbleChart'
-import ScatterChart from './ChartjsScatterChart'
 import DoughnutChart from './ChartjsDoughnutChart'
-import PolarAreaChart from './ChartjsPolarAreaChart'
 import HorizontalBarChart from './ChartjsHorizontalBar'
+import LineChart from './ChartjsLineChart'
+import PolarAreaChart from './ChartjsPolarAreaChart'
+import RadarChart from './ChartjsRadarChart'
+import ScatterChart from './ChartjsScatterChart'
 
 // ** Custom Hooks
 import { useSkin } from '@hooks/useSkin'
@@ -66,7 +66,7 @@ const ChartJS = () => {
         <Col xl='6' sm='12'>
           <BarChart success={successColorShade} labelColor={labelColor} gridLineColor={gridLineColor} />
         </Col>
-        <Col xl='6' sm='12'>
+         <Col xl='6' sm='12'>
           <HorizontalBarChart
             info={colors.info.main}
             labelColor={labelColor}

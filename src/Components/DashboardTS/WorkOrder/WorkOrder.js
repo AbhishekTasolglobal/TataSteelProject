@@ -13,29 +13,24 @@ import {
   CardTitle,
   Col,
 } from "reactstrap";
+
 import PopUp from "../Modal/PopUp";
+import OWOChart from "./Chart/OWOChart";
 
 const dragItems = [
   {
     id: "1",
-    title: "Total Open Work Order",
-    quant: "2",
+    title: "Open / Closed ",
+    quant1: "2",
+    quant2: "3",    
     location: "2nd Building",
     time: "1:00pm",
-    link: "View details..",
-    pannel_details:  'active',
-    name:'towo'
+    link: <u>more..</u>,
+    pannel_details: "active",
+    name: "towo",
+    chart: <OWOChart />,
   },
-  {
-    id: "2",
-    title: "Total Close Work Order",
-    quant: "2",
-    location: "2nd Building",
-    time: "1:00pm",
-    link: "View details...",
-    pannel_details:  'active',
-    name:'tcwo'
-  },
+  
 ];
 
 const WorkOrder = () => {
@@ -57,10 +52,9 @@ const WorkOrder = () => {
     <>
       <CardHeader className="d-flex flex-md-row flex-column justify-content-md-between justify-content-start align-items-md-center align-items-start">
         <CardTitle tag="h4">
-          <h3>Break Down Work Order</h3>
+          <h3>BreakDown Work Order</h3>
         </CardTitle>
-        <CardTitle style={{ "padding-left": "32em" }}>Sort By:</CardTitle>
-        <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
+         <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
           <DropdownToggle color="flat-primary" caret>
             {active}
           </DropdownToggle>
@@ -99,25 +93,39 @@ const WorkOrder = () => {
         setList={setCardsArr}
       >
         {cardsArr.map((item) => (
-          <Col className="draggable" xl="6" md="6" sm="12" key={item.id}>
+          <Col className="draggable" xl="12" md="12" sm="12" key={item.id}>
             <Card
               className={`draggable-cards ${item.id !== 4 ? "me-1" : null}`}
+              style={{ height: "15rem" }}
+              
             >
-              <CardHeader>
-                <CardTitle tag="h1">{item.title}</CardTitle>
-              </CardHeader>
-              <CardBody>
-                <CardText>{item.quant}</CardText>
-                <CardText>
-                  <Button.Ripple
-                    color="flat-primary"
-                    onClick={() => getData(item)}
-                  >
-                    {item.link}
-                  </Button.Ripple>
-                  <PopUp item={data} modal={modal} setModal={setModal} />
-                </CardText>
-              </CardBody>
+              <div className="flex">
+                <div>
+                  <CardHeader>
+                    <CardTitle tag="h1" >
+                      {item.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardBody>
+                    <CardText>
+                      {item.quant1} / {item.quant2}
+                    </CardText>
+                    <br/>
+                    <br/>
+                    <>
+                      <Button.Ripple
+                        color="flat-primary"
+                        onClick={() => getData(item)}
+                        style={{ marginLeft: "-12%" }}
+                      >
+                        {item.link}
+                      </Button.Ripple>
+                      <PopUp item={data} modal={modal} setModal={setModal} />
+                    </>
+                  </CardBody>
+                </div>
+                <div>{item.chart}</div>
+              </div>
             </Card>
           </Col>
         ))}

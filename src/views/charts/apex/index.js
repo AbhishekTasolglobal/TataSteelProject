@@ -28,6 +28,7 @@ import ApexCandlestickChart from './ApexCandlestickChart'
 // ** Styles
 import '@styles/react/libs/charts/apex-charts.scss'
 import '@styles/react/libs/flatpickr/flatpickr.scss'
+import OWOChart from '../../../Components/DashboardTS/WorkOrder/Chart/OWOChart'
 
 const ApexCharts = () => {
   // ** Hooks
@@ -53,6 +54,9 @@ const ApexCharts = () => {
         </Col>
         <Col sm='12'>
           <ApexColumnChart direction={isRtl ? 'rtl' : 'ltr'} />
+        </Col>
+        <Col sm='12'>
+          <OWOChart direction={isRtl ? 'rtl' : 'ltr'} />
         </Col>
         <Col sm='12'>
           <ApexScatterChart

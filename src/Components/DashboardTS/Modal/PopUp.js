@@ -32,9 +32,6 @@ const PopUp = ({ item, modal, setModal }) => {
               item.name === "old" ||
               item.name === "towo" ||
               item.name === "tcwo" ||
-              item.name === "active" ||
-              item.name === "ack" ||
-              item.name === "close" ||
               item.name === "opmwo" ||
               item.name === "cpmwo") && <h4>Time: {item.time}</h4>}
            
@@ -49,12 +46,12 @@ const PopUp = ({ item, modal, setModal }) => {
                 <h4>Asset Details: {item.asset_details}</h4>
               }
 
-            {item.name === "active" && <h4>Active Time: {item.active_time}</h4>}
+            {(item.name === "active" && <h4>Active Time: {item.active_time}</h4>)}
             
-            {item.name === "ack" && 
+            {(item.name === "ack" && 
               <h4>Acknowledged Time: {item.acknowledged_time}</h4>
-            }
-            {item.name === "close" && <h4>Close Time: {item.close_time}</h4>}
+            )}
+            {(item.name === "close" && <h4>Close Time: {item.close_time}</h4>)}
             
               <h4>
                 CCTV Link: <a href={`http://${item.cctv_link}`}>{item.cctv_link}</a>
