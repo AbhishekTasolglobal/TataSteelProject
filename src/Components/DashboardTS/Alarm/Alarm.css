@@ -1,0 +1,21 @@
+.flex{
+    display: flex;
+    justify-content:space-between;
+}
+
+.card{
+display: flex;
+  /* align-items:center; */
+}
+
+.text {
+  flex: 0 ;
+  text-align: left;
+}
+
+.image {
+  flex: 0 0 auto;
+  width: 45%;
+  text-align: right;
+  /* height: 50px; */
+}
